@@ -31,10 +31,10 @@ chrome.webRequest.onBeforeSendHeaders.addListener(function (details) {
 
     if (details.url.match(/photobucket/)) {
         var newHeaders = {};
-        var randomUserAgent = getRandomUserAgent();
 
         refererUrl = details.url;
         if (details.url.match(/albums\/[^\/]+\/([^\/]+)\//)) {
+            var randomUserAgent = getRandomUserAgent();
             for (var i = 0, l = headers.length; i < l; ++i) {
                 if (headers[i].name.toLowerCase() === "user-agent") {
                     headers[i].value = randomUserAgent;
